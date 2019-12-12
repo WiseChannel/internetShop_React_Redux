@@ -4,7 +4,7 @@ import {FETCH_PHONES_SUCCESS} from "../actionType";
 
 const initialState = {
     ids: []
-}
+};
 
 export default (state = initialState, {type, payload}) => {
     switch (type) {
