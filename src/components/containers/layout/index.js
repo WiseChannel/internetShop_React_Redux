@@ -10,7 +10,18 @@ const routes =(
 );
 
 const Layout = () => (
-    <div> {routes} </div>
+    <div className='viev-container'>
+        <div className='container'>
+            <div className='row'>
+                <div className='col-md-3'>
+                    SideBar
+                </div>
+                <div className='col-md-9'>
+                    {routes}
+                </div>
+            </div>
+        </div>
+    </div>
 );
 
 
