@@ -7,3 +7,10 @@ export const fetchPhones = async () => {
         // reject(phones)
     })
 };
+
+export const loadMorePhones = async ({offset}) => {
+    return new Promise((resolve, reject) => {
+        resolve(phones)
+        // reject(phones)
+    })
+};

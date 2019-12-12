@@ -1,10 +1,13 @@
 import {
     FETCH_PHONES_START,
     FETCH_PHONES_SUCCESS,
-    FETCH_PHONES_FAILURES
+    FETCH_PHONES_FAILURES,
+    LOAD_MORE_PHONES_START,
+    LOAD_MORE_HONES_FAILURES,
+    LOAD_MORE_PHONES_SUCCESS
 } from '../../actionType'
-import {fetchPhones as fetchPhonesApi} from "../../api";
-
+import {fetchPhones as fetchPhonesApi, loadMorePhones as loadMorePhonesApi} from "../../api";
+import {getRenderedPhonesLenght} from '../../selectors'
 
 export const fetchPhones = () => async dispatch => {
     dispatch({
@@ -27,4 +30,27 @@ export const fetchPhones = () => async dispatch => {
         })
     }
     
+}
+
+export const loadMorePhones = () => async (dispatch, getState) => {
+    const offset = getRenderedPhonesLenght(getState());
+    dispatch({
+        type: LOAD_MORE_PHONES_START
+    });
+
+    try {
+        const phones = await loadMorePhonesApi({offset});
+        dispatch({
+            type: LOAD_MORE_PHONES_SUCCESS,
+            payload: phones
+        })
+    }
+    catch (err) {
+        dispatch({
+            type: LOAD_MORE_HONES_FAILURES,
+            payload: err,
+            error: true
+        })
+    }
+
 }
