@@ -1,6 +1,6 @@
 import  * as R from 'ramda'
 
-import {FETCH_PHONES_SUCCESS, LOAD_MORE_PHONES_SUCCESS} from "../actionType";
+import {FETCH_PHONE_BY_ID_SUCCESS, LOAD_MORE_PHONES_SUCCESS} from "../actionType";
 
 const initialState = {
     ids: []
@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state = initialState, {type, payload}) => {
     switch (type) {
-        case FETCH_PHONES_SUCCESS:
+        case FETCH_PHONE_BY_ID_SUCCESS:
            return  R.merge(state, {                  //получаем масив id-шников
                ids: R.pluck('id', payload)
            })

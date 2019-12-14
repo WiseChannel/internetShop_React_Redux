@@ -10,7 +10,7 @@ import {
     FETCH_PHONE_BY_ID_SUCCESS
 } from '../../actionType'
 import {fetchPhones as fetchPhonesApi, loadMorePhones as loadMorePhonesApi, fetchPhoneById as fetchPhoneByIdApi} from "../../api";
-import {getRenderedPhonesLenght} from '../../selectors'
+import {getRenderedPhonesLength} from '../../selectors'
 
 export const fetchPhones = () => async dispatch => {
     dispatch({
@@ -36,7 +36,7 @@ export const fetchPhones = () => async dispatch => {
 }
 
 export const loadMorePhones = () => async (dispatch, getState) => {
-    const offset = getRenderedPhonesLenght(getState());
+    const offset = getRenderedPhonesLength(getState());
     dispatch({
         type: LOAD_MORE_PHONES_START
     });
@@ -70,7 +70,7 @@ export const fetchPhoneById = id => async dispatch => {
     } catch (err) {
         dispatch({
             type: FETCH_PHONE_BY_ID_FAILURES,
-            erro: true,
+            err: true,
             payload: err
         })
     }
